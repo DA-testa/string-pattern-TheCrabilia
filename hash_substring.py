@@ -12,23 +12,20 @@ def rabin_karp(pattern: str, text: str) -> list[int]:
 
 
 def main():
-    # I - input from keyboard
-    # F - input from file
-    source = sys.stdin.readline().strip().split("\\r\\n")
-    if source[0] == "I":
-        pattern = source[1]
-        text = source[2]
-    elif source[0] == "F":
-        filename = source[1]
-        if filename.endswith(".a"):
-            print("Invalid file name")
-            sys.exit()
-
-        with open(filename, "r") as f:
-            pattern = f.readline().strip()
-            text = f.readline().strip()
+    mode = input().rstrip()
+    if mode == "I":
+        pattern = input().rstrip()
+        text = input().rstrip()
+    elif mode == "F":
+        with open("tests/06", "r") as f:
+            pattern = f.readline().rstrip()
+            text = f.readline().rstrip()
+    else:
+        print("Invalid mode")
+        sys.exit(1)
 
     matches = rabin_karp(pattern, text)
+    print(list(matches))
     print(" ".join(map(str, matches)))
 
 
