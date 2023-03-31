@@ -25,7 +25,6 @@ def main():
         sys.exit(1)
 
     matches = rabin_karp(pattern, text)
-    print(list(matches))
     print(" ".join(map(str, matches)))
 
 
