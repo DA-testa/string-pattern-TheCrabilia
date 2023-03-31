@@ -14,12 +14,12 @@ def rabin_karp(pattern: str, text: str) -> list[int]:
 def main():
     # I - input from keyboard
     # F - input from file
-    source = input().strip()
-    if source[0:1] == "I":
-        pattern = input()
-        text = input()
+    source = sys.stdin.readline().strip().split("\\r\\n")
+    if source[0] == "I":
+        pattern = source[1]
+        text = source[2]
     elif source[0] == "F":
-        filename = input().strip()
+        filename = source[1]
         if filename.endswith(".a"):
             print("Invalid file name")
             sys.exit()
